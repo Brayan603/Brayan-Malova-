@@ -1,0 +1,184 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/*Home page styling*/
+body{
+  background-image: url('m1 (2).jpg');
+  background-size: 25%;
+  color: white;
+  overflow-x: hidden;
+  
+
+}
+
+a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+.header{
+  background-color: lavender;
+  padding: 0.7rem;;
+  text-align: right;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  box-shadow: 0 4px 12px rgba(114, 188, 248, 0.5); 
+  
+}
+.header-content{
+  justify-content: space-between;
+  display: flex;
+  max-width: 1200px;
+
+}
+
+.logo-area{
+  display: flex;
+  align-items: center;
+  grid-area: 0.7rem; 
+  padding: 0 3.5rem;
+  
+}
+
+.logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 5%;
+  object-fit: contain;
+}
+
+.brand-name{
+  color: deepskyblue;
+  font-size: 20px;
+  font-family: century gothic;
+  margin-left: 0.7rem;
+  font-weight: 700;
+}
+
+.nav-menu{
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+.nav-menu a{
+  color: deepskyblue;
+  font-size: 1.1rem;
+  font-family: century gothic;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 0px;
+  width: 0%;
+  height: 2px;
+  background-color: blueviolet;
+  transition: width 0.3s ease;
+  }
+
+.nav-menu a:hover::after {
+width: 100%;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+color:blueviolet;
+}
+
+.nav-menu .home-link:hover {
+  color: blueviolet;
+}
+
+.projects {
+  height: 55vh;
+  background-image: url('Black\ and\ Teal\ Modern\ Web\ Developer\ Presentation.jpg');
+  background-size: 90%;
+  padding: 2rem;
+  font-family: century gothic;
+}
+.projects h1 {
+  color: deepskyblue;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 50%;
+}
+.projects p {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  width: 50%;
+}
+
+.image-container {
+  width: 100%;
+  margin-top: -18.5rem;
+  margin-left: 26rem;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  
+}
+
+.project-image {
+  width: 31%;
+  height: 31%;
+  object-fit: cover;
+  margin-left: 25%;
+  border-radius: 10px;
+}
+
+.project-wrapper {
+  background-color: #d0e6f7; /* same as gap color */
+  padding: 1rem; /* controls thickness of the gap illusion */
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+ 
+}
+
+.project-list {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  color: #333;
+  padding: 1.5rem;
+   margin-top: 2rem;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(114, 188, 248, 0.2);
+}
+.project-list h2 {
+  color:#003366;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.project-list p {
+   color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+footer{
+  background-color: blueviolet;
+  text-align: center;
+  font-family: century gothic;
+  font-weight: 400;
+  color: black;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+  margin: -2rem;
+}
