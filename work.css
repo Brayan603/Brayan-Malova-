@@ -1,74 +1,113 @@
-*{
+/* --- Base Styling --- */
+* {
   box-sizing: border-box;
   margin: 0;
 }
 
-/*Home page styling*/
-body{
-  background-image: url('m1 (2).jpg');
-  background-size: 12.5%;
+body {
+  background-color: #000;
   color: white;
   overflow-x: hidden;
-  
-
+  font-family: "Century Gothic", sans-serif;
+  position: relative;
+  min-height: 100vh;
 }
 
-a {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s ease;
-    }
+/* ---- Smooth Animated Background ---- */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.5;
+  background-repeat: repeat;
+}
 
-.header{
-  background-color: lavender;
-  padding: 0.7rem;;
+/* Stars drifting background */
+body::before {
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: starsDrift 90s linear infinite;
+}
+
+/* Subtle twinkle glow */
+body::after {
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 3px 3px;
+  animation: starsTwinkle 3s ease-in-out infinite alternate;
+  opacity: 0.25;
+}
+
+@keyframes starsDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: -4000px 4000px; }
+}
+
+@keyframes starsTwinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.4; }
+}
+
+/* ---------------- HEADER ---------------- */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.header {
+  padding: 0.7rem 1rem;
   text-align: right;
   position: sticky;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(114, 188, 248, 0.5);
-  top: 0%; 
-  
+  top: 0;
+  background-color: #000;
+  box-shadow: 0 4px 12px rgba(114, 188, 248, 0.4);
+  backdrop-filter: blur(6px);
 }
-.header-content{
+
+.header-content {
   justify-content: space-between;
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   max-width: 1200px;
-
+  margin: auto;
 }
 
-.logo-area{
+.logo-area {
   display: flex;
   align-items: center;
-  grid-area: 0.7rem; 
-  padding: 0 3.5rem;
-  
+  padding: 0 2rem;
 }
 
-.logo{
+.logo {
   width: 40px;
   height: 40px;
   border-radius: 5%;
   object-fit: contain;
 }
 
-.brand-name{
-  color: deepskyblue;
+.brand-name {
+  color: #39FF14;
   font-size: 20px;
   font-family: century gothic;
   margin-left: 0.7rem;
   font-weight: 700;
 }
 
-.nav-menu{
+.nav-menu {
   display: flex;
-  gap: 2.5rem;
+  flex-wrap: wrap;
+  gap: 2rem;
   padding-top: 0.5rem;
 }
 
-.nav-menu a{
+.nav-menu a {
   color: deepskyblue;
   font-size: 1.1rem;
-  font-family: century gothic;
   font-weight: 700;
   position: relative;
   padding-bottom: 4px;
@@ -81,56 +120,229 @@ a {
   left: 0px;
   width: 0%;
   height: 2px;
-  background-color: blueviolet;
+  background-color: #39FF14;
   transition: width 0.3s ease;
-  }
+}
 
 .nav-menu a:hover::after {
-width: 100%;
+  width: 100%;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-color:blueviolet;
+  color: #39FF14;
 }
 
-.nav-menu .home-link:hover {
-  color: blueviolet;
-
+/* ---------------------------------------------------------- */
+/* --- Work Experience Timeline --- */
+.work {
+  position: relative;
+  padding: 80px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
-.work{
- padding: 20px;
-  width: 100vw;
-  display: flex;  
+
+/* --- Glowing Spear Line --- */
+.work::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  bottom: 0;
+  width: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #39FF14, deepskyblue, blueviolet, #39FF14);
+  background-size: 400% 400%;
+  animation: spearFlow 4s linear infinite;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4),
+              0 0 45px rgba(138, 43, 226, 0.5);
+  opacity: 0.95;
 }
 
-.work h1{
-  font-family: century gothic;
-  font-weight: 700;
+/* Spear tip */
+.work::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #39FF14, blueviolet);
+  border-radius: 2px;
+  box-shadow: 0 0 20px #39FF14, 0 0 40px deepskyblue;
+}
+
+@keyframes spearFlow {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* --- Work Container --- */
+.work-container {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  z-index: 1;
+}
+
+/* --- Cards --- */
+.work-container > div {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 25px 30px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+  width: 45%;
+  position: relative;
+  animation: fadeUp 1.2s ease-in-out both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Position cards alternately */
+.work-container > div:nth-child(odd) {
+  align-self: flex-start;
+  margin-right: 50px;
+}
+
+.work-container > div:nth-child(even) {
+  align-self: flex-end;
+  margin-left: 50px;
+}
+
+/* --- Connection Dots --- */
+.work-container > div::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  width: 20px;
+  height: 22px;
+  background: radial-gradient(circle, #39FF14 0%, deepskyblue 40%, transparent 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 25px #39FF14, 0 0 35px deepskyblue;
+  z-index: 3;
+}
+
+.work-container > div:nth-child(odd)::before { right: -10px; }
+.work-container > div:nth-child(even)::before { left: -10px; }
+
+/* --- Headings --- */
+h1 {
+  font-size: 1.3rem;
   color: deepskyblue;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-.work p {
-  font-family: century gothic;
-  font-weight: 400;
-  color: white;
-  font-size: 1rem;
-  margin-left: 20px;
-  margin-right: 60px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
   text-align: left;
-  letter-spacing: 0.5px;
-
 }
 
+/* --- Paragraphs --- */
+p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
 
-footer {
-  background-color: blueviolet;
-  text-align: center;
-  font-family: century gothic;
-  font-weight: 400;
-  color: black;
-  padding: 1.5rem 0;
+/* --- Bullet Points --- */
+ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+ul li {
+  position: relative;
+  margin-bottom: 10px;
+  color: #ddd;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #39FF14;
   font-size: 0.9rem;
-  margin-top: -1%;
+  transform: translateY(3px);
+  transition: color 0.3s ease;
+}
+
+ul li:hover {
+  transform: translateX(6px);
+  color: white;
+}
+
+/* --- Animations --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+  .work {
+    padding: 60px 0;
+  }
+  .work::before {
+    width: 6px;
+  }
+  .work-container > div {
+    width: 80%;
+    margin: auto;
+  }
+  .work-container > div:nth-child(odd),
+  .work-container > div:nth-child(even) {
+    align-self: center;
+    margin: 0;
+  }
+  .work-container > div::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .work-container {
+    width: 95%;
+    gap: 70px;
+  }
+
+  .work-container > div {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .work::before {
+    left: 50%;
+    width: 4px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  p, ul li {
+    font-size: 1rem;
+  }
 }
