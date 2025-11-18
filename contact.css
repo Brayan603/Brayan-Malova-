@@ -1,73 +1,113 @@
-*{
+/* --- Base Styling --- */
+* {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
-/*Home page styling*/
-body{
-  background-image: url('m1 (2).jpg');
-  background-size: 12.5%;
+body {
+  background-color: #000;
   color: white;
   overflow-x: hidden;
-  
-
+  font-family: "Century Gothic", sans-serif;
+  position: relative;
+  min-height: 100vh;
 }
 
-a {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s ease;
-    }
+/* ---- Smooth Animated Background ---- */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.5;
+  background-repeat: repeat;
+}
 
-.header{
-  background-color: lavender;
-  padding: 0.7rem;;
+/* Stars drifting background */
+body::before {
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: starsDrift 90s linear infinite;
+}
+
+/* Subtle twinkle glow */
+body::after {
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 3px 3px;
+  animation: starsTwinkle 3s ease-in-out infinite alternate;
+  opacity: 0.25;
+}
+
+@keyframes starsDrift {
+  0% { background-position: 0 0; }
+  100% { background-position: -4000px 4000px; }
+}
+
+@keyframes starsTwinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.4; }
+}
+
+/* ---------------- HEADER ---------------- */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.header {
+  padding: 0.7rem 1.2rem;
   text-align: right;
   position: sticky;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(114, 188, 248, 0.5); 
-  
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 12px rgba(114, 188, 248, 0.4);
+  backdrop-filter: blur(6px);
 }
-.header-content{
-  justify-content: space-between;
+
+.header-content {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 1200px;
-
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.logo-area{
+.logo-area {
   display: flex;
   align-items: center;
-  grid-area: 0.7rem; 
-  padding: 0 3.5rem;
-  
+  gap: 0.6rem;
 }
 
-.logo{
+.logo {
   width: 40px;
   height: 40px;
   border-radius: 5%;
   object-fit: contain;
 }
 
-.brand-name{
-  color: deepskyblue;
-  font-size: 20px;
-  font-family: century gothic;
-  margin-left: 0.7rem;
+.brand-name {
+  color: #39FF14;
+  font-size: 1.3rem;
   font-weight: 700;
 }
 
-.nav-menu{
+.nav-menu {
   display: flex;
-  gap: 2.5rem;
-  padding-top: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+  justify-content: center;
 }
 
-.nav-menu a{
+.nav-menu a {
   color: deepskyblue;
-  font-size: 1.1rem;
-  font-family: century gothic;
+  font-size: 1.05rem;
   font-weight: 700;
   position: relative;
   padding-bottom: 4px;
@@ -80,108 +120,201 @@ a {
   left: 0px;
   width: 0%;
   height: 2px;
-  background-color: blueviolet;
+  background-color: #39FF14;
   transition: width 0.3s ease;
-  }
+}
 
 .nav-menu a:hover::after {
-width: 100%;
+  width: 100%;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-color:blueviolet;
+  color: #39FF14;
 }
 
-.nav-menu .home-link:hover {
-  color: blueviolet;
+/* ---------------- CONTACT SECTION ---------------- */
+.contact-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.15),
+              inset 0 0 20px rgba(0, 191, 255, 0.2);
+  max-width: 650px;
+  margin: 5rem auto;
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
- /* Contact Section */
-    .contact-section {
-      background: lightblue;
-      max-width: 600px;
-      margin: 4rem auto;
-      padding: 2rem 2.5rem;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-      text-align: left;
-    }
-
-    .contact-section h2 {
-      margin-bottom: 0.5rem;
-      color: #111;
-      font-weight: 700;
-      font-size: 2rem;
-      font-family: century gothic;
-      text-align: center;
-    }
-
-    .contact-section p {
-      margin-bottom: 1.8rem;
-      font-size: 1.1rem;
-      line-height: 1.5;
-      font-family:century gothic;
-      color:  #111;
-    }
-
-    .contact-info {
-      text-align: left;
-      margin-bottom: 2rem;
-      font-size: 1rem;
-      line-height: 1.6;
-      color:  #111;
-    }
-
-    .contact-info div {
-      margin: 0.4rem 0;
-    }
-
-    .contact-info strong {
-      color: #003366;
-    }
-
-    .whatsapp-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background-color: #25D366;
-      color: white;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 0.9rem 1.8rem;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 10px rgba(37, 211, 102, 0.5);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .whatsapp-button img {
-      width: 24px;
-      height: 24px;
-      filter: drop-shadow(0 0 1px #fff);
-    }
-
-    .whatsapp-button:hover,
-    .whatsapp-button:focus {
-      background-color: #128c4a;
-      box-shadow: 0 8px 15px rgba(18, 140, 74, 0.7);
-      outline: none;
-    }
-     
-    .contact-section:hover{
-  background-color: lavender;
-  filter: brightness(100%);
-  transform: scale(1.03);
-  box-shadow: 30 18px 30px 30px rgba(230, 6, 181, 0.2);
+/* --- Animated Neon Border Lines --- */
+.contact-section::before,
+.contact-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: conic-gradient(
+    from 0deg,
+    #39FF14,
+    deepskyblue,
+    blueviolet,
+    #39FF14
+  );
+  z-index: -1;
+  animation: borderSpin 6s linear infinite;
+  padding: 2px;
+  -webkit-mask: 
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
 }
 
+@keyframes borderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: #fff;
-      background: blueviolet;
-      margin-top: auto;
-    }
+.contact-section h2 {
+  margin-bottom: 1rem;
+  color: deepskyblue;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0,191,255,0.7);
+}
+
+.contact-section p {
+  margin-bottom: 1.8rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* --- Contact Info --- */
+.contact-info {
+  text-align: left;
+  margin-bottom: 2.2rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: white;
+}
+
+.contact-info div {
+  margin: 0.6rem 0;
+  padding-left: 1.3rem;
+  position: relative;
+}
+
+.contact-info div::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: #39FF14;
+  font-size: 1.1rem;
+}
+
+.contact-info strong {
+  color: deepskyblue;
+}
+
+/* --- WhatsApp Button --- */
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(90deg, #25D366, #39FF14);
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.whatsapp-button img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 1px #fff);
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:focus {
+  background: linear-gradient(90deg, #39FF14, #25D366);
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
+  outline: none;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #fff;
+  background: blueviolet;
+  margin-top: auto;
+}
+
+/* ---------------- RESPONSIVE DESIGN ---------------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .contact-section {
+    padding: 2rem;
+    margin: 4rem 1rem;
+  }
+
+  .contact-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .nav-menu {
+    gap: 1.2rem;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .contact-section {
+    max-width: 95%;
+    padding: 1.8rem 1.2rem;
+  }
+
+  .contact-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-section p {
+    font-size: 1rem;
+  }
+
+  .whatsapp-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-info {
+    font-size: 0.95rem;
+  }
+}
